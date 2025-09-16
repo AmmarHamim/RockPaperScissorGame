@@ -6,8 +6,14 @@
 # continue or not
 
 import random
-choices = ('r','p','s')
-emojis={'r':'✊','p':'✋','s':'✌️'}
+ROCK='r'
+PAPER='p'
+SCISSORS='s'
+
+# choices = ('r','p','s')
+emojis={ROCK:'✊', PAPER:'✋', SCISSORS:'✌️'}
+choices=tuple(emojis.keys())
+# choices=(ROCK,PAPER,SCISSORS)
 scores={'wins':0,'losses':0,'ties':0}
 
 def get_user_input():
@@ -27,9 +33,9 @@ def choose_winner(user_choice,computer_choice):
         print("Tie")
         scores['ties']+=1
     elif(
-        (user_choice=='r' and computer_choice=='s') 
-        or (user_choice=='s' and computer_choice=='p') 
-        or (user_choice=='p' and computer_choice=='r')):
+        (user_choice== ROCK and computer_choice== SCISSORS) 
+        or (user_choice== SCISSORS and computer_choice==PAPER) 
+        or (user_choice==PAPER and computer_choice==ROCK)):
         print("You Win 🎉 ")
         scores['wins']+=1
     else:
